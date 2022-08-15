@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Customer } from "modules/customer/domain/entity/Customer";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
 
 @Entity("tb_payment")
 export class Payment {
@@ -19,4 +20,8 @@ export class Payment {
 
   @Column()
   cashback: number;
+
+  @ManyToOne(() => Customer)
+  @JoinColumn({ name: "user_id", referencedColumnName: "id" })
+  customer: Customer
 }
