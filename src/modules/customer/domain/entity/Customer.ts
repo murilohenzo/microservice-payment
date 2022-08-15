@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Payment } from "../../../payment/domain/entity/Payment";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from "typeorm";
 
 @Entity("tb_customer")
 export class Customer {
@@ -8,7 +9,7 @@ export class Customer {
   @Column({ length: "100", unique: false })
   name: string;
 
-  @Column({ type: "int64" })
+  @Column()
   age: number;
 
   @Column({ length: "11", unique: true })
@@ -16,4 +17,7 @@ export class Customer {
 
   @Column()
   balance: number;
+
+  @OneToMany(() => Payment, (payment) => payment.customer)
+  payments: Payment[];
 }
