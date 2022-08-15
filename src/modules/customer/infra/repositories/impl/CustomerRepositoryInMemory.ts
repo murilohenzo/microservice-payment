@@ -1,5 +1,5 @@
-import { Customer } from "modules/customer/domain/entity/Customer";
-import { ICustomerDTO } from "modules/customer/domain/dto/ICustomerDTO";
+import { Customer } from "../../../domain/entity/Customer";
+import { ICustomerDTO } from "../../../domain/dto/ICustomerDTO";
 import { ICustomerRepository } from "../ICustomerRepository";
 import { v4 as uuidv4 } from 'uuid'
 

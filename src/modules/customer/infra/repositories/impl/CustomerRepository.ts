@@ -1,7 +1,7 @@
-import { ICustomerDTO } from "modules/customer/domain/dto/ICustomerDTO";
-import { Customer } from "modules/customer/domain/entity/Customer";
-import { getRepository, Repository } from "typeorm";
+import { ICustomerDTO } from "../../../domain/dto/ICustomerDTO";
+import { Customer } from "../../../domain/entity/Customer";
 import { ICustomerRepository } from "../ICustomerRepository";
+import { getRepository, Repository } from "typeorm";
 
 export class CustomerRepository implements ICustomerRepository {
 

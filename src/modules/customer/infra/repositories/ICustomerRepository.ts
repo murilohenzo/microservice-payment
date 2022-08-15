@@ -1,7 +1,7 @@
-import { ICustomerDTO } from "modules/customer/domain/dto/ICustomerDTO";
+import { ICustomerDTO } from "../../domain/dto/ICustomerDTO";
 
 export interface ICustomerRepository {
-  save(customer: ICustomerDTO): Promise<ICustomerDTO>
+  save(customer: Omit<ICustomerDTO, "id">): Promise<ICustomerDTO>
   findAll(take: number, page: number): Promise<ICustomerDTO[]>;
   findById(id: string): Promise<ICustomerDTO>;
   update(
