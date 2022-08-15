@@ -4,11 +4,11 @@ module.exports = {
   port: 5432,
   username: "postgres",
   password: "postgres",
-  database: "test",
-  entities: ["./src/modules/**/infra/orm/entities/*{.ts,.js}"],
-  migrations: ["./src/shared/infra/orm/migrations/*{.ts,.js}"],
+  database: "postgres",
+  entities: ["./src/modules/**/domain/entity/*{.ts,.js}"],
+  migrations: ["./src/shared/infra/repositories/migrations/*{.ts,.js}"],
   cli: {
-    migrationsDir: "./src/shared/infra/orm/migrations/",
+    migrationsDir: "./src/shared/infra/repositories/migrations/",
   },
   synchronize: true,
 };

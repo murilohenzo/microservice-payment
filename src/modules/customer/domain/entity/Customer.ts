@@ -8,7 +8,7 @@ export class Customer {
   @Column({ length: "100", unique: false })
   name: string;
 
-  @Column({ type: "int64" })
+  @Column()
   age: number;
 
   @Column({ length: "11", unique: true })
