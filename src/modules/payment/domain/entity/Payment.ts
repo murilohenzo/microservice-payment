@@ -12,7 +12,7 @@ export class Payment {
   @Column()
   amount: number;
 
-  @Column({ type: 'date' })
+  @Column({ name: "payment_date", type: 'date' })
   paymentDate: Date;
 
   @Column({ type: 'enum', default: "PENDENTE", enum: ['PENDENTE', 'FINALIZADO'] })
