@@ -17,7 +17,4 @@ export class Customer {
 
   @Column()
   balance: number;
-
-  @OneToMany(() => Payment, (payment) => payment.customer)
-  payments: Payment[];
 }

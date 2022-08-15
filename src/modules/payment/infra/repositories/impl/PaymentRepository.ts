@@ -1,5 +1,5 @@
-import { IPaymentDTO } from "modules/payment/domain/dto/IPaymentDTO";
-import { Payment } from "modules/payment/domain/entity/Payment";
+import { IPaymentDTO } from "../../../domain/dto/IPaymentDTO";
+import { Payment } from "../../../domain/entity/Payment";
 import { getRepository, Repository } from "typeorm";
 import { IPaymentRepository } from "../IPaymentRepository";
 

@@ -1,5 +1,3 @@
-import { Customer } from "modules/customer/domain/entity/Customer";
-
 export class IPaymentDTO {
   id: string;
   billet: string;
@@ -7,5 +5,5 @@ export class IPaymentDTO {
   paymentDate: Date;
   status: string;
   cashback: number;
-  customer: Customer
+  customer_id: string;
 }
