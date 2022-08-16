@@ -8,4 +8,8 @@ paymentRoutes.post("", (request: Request, response: Response) => {
   return paymentController.create(request, response);
 });
 
+paymentRoutes.get("", (request: Request, response: Response) => {
+  return paymentController.findAll(request, response);
+});
+
 export { paymentRoutes };
