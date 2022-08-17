@@ -19,17 +19,7 @@ export class CustomerRepository implements ICustomerRepository {
     return newCustomer;
   }
   async findAll(take: number, page: number): Promise<ICustomerDTO[]> {
-    const customers = await this.customerRepository.query(
-    `
-      select d.id, d.name, d.sex, d.age, d.hobby, d.birth_date, d.level_id, l.level 
-      from developers d 
-      inner join levels l 
-      on d.level_id = l.id 
-      order by d.id
-      offset ${(page - 1) * take} rows fetch next ${take} rows only
-    `)
-
-    return customers;
+    return await this.customerRepository.query(`select * from tb_customer tc order by tc.id offset ${page} rows fetch next ${take} rows only`)
   }
   async findById(id: string): Promise<ICustomerDTO> {
     const customer = await this.customerRepository.findOne(id);
