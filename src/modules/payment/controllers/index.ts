@@ -16,7 +16,7 @@ export class PaymentController {
         const service = container.resolve(CreatePaymentUseCase);
         const payment = await service.execute(paymentDTO);
 
-        return response.status(StatusCodes.CREATED).json(payment);
+        return response.status(StatusCodes.CREATED).json({ message: payment});
       } catch (error: any) {
         return response.status(StatusCodes.BAD_REQUEST).json({ message: error.message });
       }

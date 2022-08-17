@@ -25,5 +25,11 @@ export class PaymentRepository implements IPaymentRepository {
     }
     return await this.paymentRepository.query(`select * from tb_payment tp where tp.customer_id = '${customer_id}' order by tp.id offset ${page} rows fetch next ${take} rows only`);
   }
+
+  async findByBillet(billet: string): Promise<IPaymentDTO | undefined> {
+    const payment = await this.paymentRepository.findOne({ billet: billet });
+    if (payment) return payment;
+    return {} as IPaymentDTO;
+  }
   
 }
