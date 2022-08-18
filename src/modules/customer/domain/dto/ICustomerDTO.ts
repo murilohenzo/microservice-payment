@@ -1,6 +1,8 @@
 export interface ICustomerDTO {
-  id: string;
+  readonly id: string;
   name: string;
+  email: string;
+  sex: string;
   age: number;
   cpf: string;
   balance: number;
