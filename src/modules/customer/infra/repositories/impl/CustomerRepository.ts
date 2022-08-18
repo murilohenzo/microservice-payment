@@ -18,6 +18,7 @@ export class CustomerRepository implements ICustomerRepository {
 
     return newCustomer;
   }
+
   async findAll(take: number, page: number): Promise<ICustomerDTO[]> {
     return await this.customerRepository.query(`select * from tb_customer tc order by tc.id offset ${page} rows fetch next ${take} rows only`)
   }
@@ -26,6 +27,7 @@ export class CustomerRepository implements ICustomerRepository {
     if (customer) return customer;
     throw new Error("Not found customer")
   }
+
   async update(id: string, customer: Omit<ICustomerDTO, "id">): Promise<ICustomerDTO> {
     const existsCustomer = await this.findById(id);
 
@@ -36,6 +38,7 @@ export class CustomerRepository implements ICustomerRepository {
 
     return await this.customerRepository.save(existsCustomer);
   }
+  
   async delete(id: string): Promise<void> {
     await this.customerRepository.delete(id);
   }

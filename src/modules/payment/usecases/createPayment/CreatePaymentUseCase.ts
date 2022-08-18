@@ -5,11 +5,11 @@ import { IPaymentRepository } from "../../infra/repositories/IPaymentRepository"
 import { inject, injectable } from "tsyringe";
 
 import { DefaultError } from "../../../../shared/error/DefaultError";
-import { ICustomerRepository } from "modules/customer/infra/repositories/ICustomerRepository";
+import { ICustomerRepository } from "../../../customer/infra/repositories/ICustomerRepository";
 
 import AWS from "aws-sdk";
 import { getCrossAccountCredentials } from "../../../../config/aws/iam";
-import Logger from "lib/logger";
+import Logger from "../../../../lib/logger";
 import { StatusCodes } from "http-status-codes";
 @injectable()
 export class CreatePaymentUseCase {
@@ -44,18 +44,33 @@ export class CreatePaymentUseCase {
         //@ts-ignore
         const sqs = new AWS.SQS(accessParams); 
 
+        let orderData = {
+          'name': existsCustomer.name,
+          'email': existsCustomer.email,
+          'billet': payment.billet,
+          'amount': payment.amount
+      }
+
         let sqsOrderData: AWS.SQS.SendMessageRequest = {
           MessageAttributes: {
+            "name": {
+              DataType: "String",
+              StringValue: orderData.name
+            },
+            "email": {
+              DataType: "String",
+              StringValue: orderData.email
+            },
             "billet": {
               DataType: "String",
-              StringValue: payment.billet
+              StringValue: orderData.billet
             },
             "amount": {
               DataType: "String",
-              StringValue: payment.amount.toString()
+              StringValue: orderData.amount.toString()
             }
           },
-          MessageBody: JSON.stringify(payment),
+          MessageBody: JSON.stringify(orderData),
           //@ts-ignore
           QueueUrl: process.env.AWS_SQS_URL
       };
