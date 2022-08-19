@@ -86,4 +86,4 @@ http://localhost:3333/customers
 }
 ```
 
-8. Observação, existe linhas comentadas dentro do ```Dockerfile.dev``` e ```docker-compose.yaml```, que caso esteja em um SO do Linux podem ser descomentadas dessa forma ira rodar o dockerizer que ira esperar o container do banco startar, para depois startar o service de pagamentos.
+8. Observação, existe linhas comentadas dentro do ```Dockerfile.dev``` e ```docker-compose.yaml```, que caso esteja em um SO do Linux podem ser descomentadas dessa forma ira rodar o dockerizer que ira esperar o container do banco startar, para depois startar o service de pagamentos. Caso esteja no SO do Windows recomendo, startar o service do docker-compose primeiramente do banco e depois do micro service para evitar problemas de conexao com o container do banco de dados.
