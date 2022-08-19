@@ -62,3 +62,26 @@ services:
 4. Rodar todos os containers com `docker-compose up ou docker-compose up -d`
 5. Outra alternativa fazendo `make build` para buildar os containers.
 6. Rodar o projeto do [Microservice Checkout Payment](https://github.com/murilohenzo/microservice-checkout-payment)
+7. Endpoints para cadastro de cliente e pagamento 
+
+```yaml
+- customers
+http://localhost:3333/customers
+
+{
+	"name": "Murilo Teste",
+	"age": 27,
+	"cpf": "12345678904",
+	"balance": 1000.00,
+	"sex": "MALE",
+	"email": "murilohezo@gmail.com"
+}
+
+- http://localhost:3333/payments
+{
+	"billet": "026500000011323116990009002022153320476101001068",
+	"amount": 50,
+	"cashback": 5,
+	"customer_id": "12e5ec64-b3ef-4b41-a03f-22e059adbc77"
+}
+```
