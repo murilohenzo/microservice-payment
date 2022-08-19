@@ -10,3 +10,18 @@ services:
     image: murilohenzo/postgres_db
     ports:
       - 5432:5432
+
+  api:
+    container_name: microservice-payment
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    image: murilohenzo/microservice-payment
+    entrypoint: dockerize -wait tcp://db:5432 -timeout 30s 
+    depends_on:
+      - db
+    command: yarn dev
+    ports:
+      - 3333:3333
+    links:
+      - db
