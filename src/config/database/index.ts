@@ -1,3 +1,8 @@
 import { createConnection } from "typeorm";
 
-createConnection();
+export const getDBConnection = async () => {
+  const connection = await createConnection();
+
+  if (!connection.isConnected) await connection.connect();
+  return connection;
+}

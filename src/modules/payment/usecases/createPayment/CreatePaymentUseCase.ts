@@ -87,7 +87,7 @@ export class CreatePaymentUseCase {
           });
           return "Boleto processado, aguarde o email sobre a finalizacao do pagamento";
       } else {
-        throw new DefaultError(`Saldo insuficiente: ${existsCustomer.balance} para pagar boleto de ${payment.amount}`);
+        throw new DefaultError(`Saldo insuficiente: ${existsCustomer.balance.toFixed(2)} para pagar boleto de ${payment.amount}`);
       }
     }
 
