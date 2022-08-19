@@ -85,3 +85,5 @@ http://localhost:3333/customers
 	"customer_id": "12e5ec64-b3ef-4b41-a03f-22e059adbc77"
 }
 ```
+
+8. Observação, existe linhas comentadas dentro do ```Dockerfile.dev``` e ```docker-compose.yaml```, que caso esteja em um SO do Linux podem ser descomentadas dessa forma ira rodar o dockerizer que ira esperar o container do banco startar, para depois startar o service de pagamentos.
